@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task,only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.all
+    @tasks = Task.all.page(params[:page])
   end
 
   def show
@@ -16,10 +16,10 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     
     if @task.save
-      flash[:success] = 'task が正常に投稿されました'
+      flash[:success] = 'タスクが正常に登録されました'
       redirect_to @task
     else
-      flash.now[:danger] = 'task が投稿されませんでした'
+      flash.now[:danger] = 'タスクが登録されませんでした'
       render :new
     end
   end
@@ -30,10 +30,10 @@ class TasksController < ApplicationController
   def update
     
     if @task.update(task_params)
-      flash[:success] = 'task は正常に更新されました'
+      flash[:success] = 'タスクは正常に更新されました'
       redirect_to @task
     else
-      flash.now[:danger] = 'task は更新されませんでした'
+      flash.now[:danger] = 'タスクは更新されませんでした'
       render :edit
     end
   end
