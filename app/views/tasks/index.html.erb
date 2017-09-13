@@ -6,6 +6,7 @@
     <thead>
       <tr>
         <th>id</th>
+        <th>ユーザー</th>
         <th>タスク</th>
         <th>ステータス</th>
       </tr>
@@ -14,6 +15,7 @@
       <% @tasks.each do |task| %>
         <tr>
           <td><%= link_to task.id, task %></td>
+          <td><%= task.user.name %></td>
           <td><%= task.content %></td>
           <td><%= task.status %></td>
         </tr>
@@ -25,4 +27,10 @@
   </div>
 <% end %>
 
-<%= link_to '新規タスクの登録', new_task_path, class: "btn btn-primary" %>
+<% if logged_in? %>
+  <%= link_to '新規タスクの登録', new_task_path, class: "btn btn-primary" %>
+<% else %>
+  <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
+  <%= link_to 'Log in!', login_path, class: 'btn btn-lg btn-primary' %>
+<% end %>
+
