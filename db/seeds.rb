@@ -5,5 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create(name: 'testu',email: 'e@e.e', password_digest: 'e')
-Task.create(content: 'test',status: '完了', user: 1)
+
+#User.create(name: 'testu',email: 'e@e.e', password_digest: 'e')
+#Task.create(content: 'test',status: '完了', user: 1)
